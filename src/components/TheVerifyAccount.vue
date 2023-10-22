@@ -1,5 +1,6 @@
 <script setup>
 import Div from "@/screens/NotifEmail/sections/Div.vue";
+import ScaleLoader from "@/components/TheScaleLayout.vue";
 </script>
 
 <template>
@@ -17,27 +18,13 @@ import Div from "@/screens/NotifEmail/sections/Div.vue";
             alt="Group"
             src="https://alibabaspaces.betalogika.tech/assets/pageVerify/static/img/group-35123.png"
         /></a> -->
-                <a
-                  class="box"
-                  href="mailto:halokakteam@gmail.com
-"
-                >
-                  <div class="rectangle"></div>
-                  <div class="label">
-                    <div class="text-wrapper">Contact US</div>
-                  </div>
-                </a>
                 <a href="halo"></a>
                 <p class="hai-ahmad-selamat">
                   Verify Dimulai! <br />
                   <br />
                   Contact Admin Jika Ada Masalah Dalam Verifikasi
                 </p>
-                <img
-                  class="element"
-                  alt="Element"
-                  src="https://alibabaspaces.betalogika.tech/assets/pageVerify/static/img/5640978-2960987-1.svg"
-                />
+                <ScaleLoader class="element" />
               </div>
               <p class="terima-kasih-tim">
                 Terima kasih! <br />
@@ -138,11 +125,11 @@ export default {
 }
 
 .overlap-wrapper .element {
-  height: 192px;
-  left: 227px;
+  height: 200px;
+  left: 127px;
   position: absolute;
-  top: 100px;
-  width: 222px;
+  top: 150px;
+  width: 422px;
 }
 
 .overlap-wrapper .terima-kasih-tim {
