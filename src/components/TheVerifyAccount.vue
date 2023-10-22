@@ -22,9 +22,13 @@ import ScaleLoader from "@/components/TheScaleLayout.vue";
                 <p class="hai-ahmad-selamat">
                   Verify Dimulai! <br />
                   <br />
-                  Contact Admin Jika Ada Masalah Dalam Verifikasi
+                  Mohon Tunggu Karena Sistem Sedang Melakukan Verifikasi
                 </p>
                 <ScaleLoader class="element" />
+                <p class="responseVerify">
+                  Selamat Akun Anda Berhasil Terverifikasi, mohon tunggu halaman
+                  ini akan mengarah ke aplikasi dalam hitungan : 5
+                </p>
               </div>
               <p class="terima-kasih-tim">
                 Terima kasih! <br />
@@ -121,6 +125,22 @@ export default {
   position: absolute;
   text-align: center;
   top: 0;
+  width: 667px;
+}
+
+.overlap-wrapper .responseVerify {
+  color: #53565a;
+  font-family: "Poppins", Helvetica;
+  font-size: 15px;
+  font-weight: 400;
+  height: 133px;
+  font-weight: bold;
+  left: 0;
+  letter-spacing: 0.15px;
+  line-height: 24px;
+  position: absolute;
+  text-align: center;
+  top: 220px;
   width: 667px;
 }
 
