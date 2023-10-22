@@ -1,50 +1,96 @@
+<script setup>
+import Div from "@/screens/NotifEmail/sections/Div.vue";
+</script>
+
 <template>
-  <div class="overlap-wrapper">
-    <div class="overlap">
-      <div class="overlap-group-4">
-        <!-- <a href="https://www.google.com">
+  <div class="notif-email">
+    <div class="group-wrapper-2">
+      <div class="group-18">
+        <div class="overlap-2">
+          <Div />
+          <div class="overlap-wrapper">
+            <div class="overlap">
+              <div class="overlap-group-4">
+                <!-- <a href="https://www.google.com">
           <img
             class="group-17"
             alt="Group"
             src="https://alibabaspaces.betalogika.tech/assets/pageVerify/static/img/group-35123.png"
         /></a> -->
-        <a
-          class="box"
-          href="mailto:halokakteam@gmail.com
+                <a
+                  class="box"
+                  href="mailto:halokakteam@gmail.com
 "
-        >
-          <div class="rectangle"></div>
-          <div class="label"><div class="text-wrapper">Contact US</div></div>
-        </a>
-        <a href="halo"></a>
-        <p class="hai-ahmad-selamat">
-          Halaman Tidak Ditemukan<br />
-          Halaman ini digunakan sebagai beranda dari halaman verifikasi
-          <br />
-          Contact Admin Jika Ada Masalah Dalam Verifikasi :
-        </p>
-        <img
-          class="element"
-          alt="Element"
-          src="https://alibabaspaces.betalogika.tech/assets/pageVerify/static/img/5640978-2960987-1.svg"
-        />
+                >
+                  <div class="rectangle"></div>
+                  <div class="label">
+                    <div class="text-wrapper">Contact US</div>
+                  </div>
+                </a>
+                <a href="halo"></a>
+                <p class="hai-ahmad-selamat">
+                  Halaman Tidak Ditemukan! <br />
+                  Jika Ada Kendala Mohon Untuk Click Tombol Dibawah
+                  <br />
+                  Contact Admin Jika Ada Masalah Dalam Verifikasi
+                </p>
+                <img
+                  class="element"
+                  alt="Element"
+                  src="https://alibabaspaces.betalogika.tech/assets/pageVerify/static/img/notfound.png"
+                />
+              </div>
+              <p class="terima-kasih-tim">
+                Terima kasih! <br />
+                <br />
+                Tim HaloKak
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
-      <p class="terima-kasih-tim">
-        Terima kasih! <br />
-        <br />
-        Tim HaloKak
-      </p>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: "OverlapWrapper",
+  name: "NotifEmail",
+  components: {
+    Div,
+  },
 };
 </script>
 
-<style>
+<style scoped>
+.notif-email {
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+
+.notif-email .group-wrapper-2 {
+  background-color: #ffffff;
+  height: 735px;
+  width: 762px;
+}
+
+.notif-email .group-18 {
+  height: 620px;
+  left: 28px;
+  position: relative;
+  top: 30px;
+  width: 694px;
+}
+
+.notif-email .overlap-2 {
+  height: 620px;
+  position: relative;
+  width: 698px;
+}
+
 .overlap-wrapper {
   height: 500px;
   left: 13px;
@@ -93,10 +139,10 @@ export default {
 }
 
 .overlap-wrapper .element {
-  height: 212px;
+  height: 192px;
   left: 227px;
   position: absolute;
-  top: 104px;
+  top: 110px;
   width: 212px;
 }
 

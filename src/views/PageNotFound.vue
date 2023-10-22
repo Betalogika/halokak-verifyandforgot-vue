@@ -3,7 +3,5 @@ import ThePageNotFound from "@/components/ThePageNotFound.vue";
 </script>
 
 <template>
-  <main>
-    <ThePageNotFound />
-  </main>
+  <ThePageNotFound />
 </template>

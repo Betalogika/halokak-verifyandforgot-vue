@@ -10,18 +10,18 @@
         /></a> -->
         <a
           class="box"
-          href="mailto:halokakteam@gmail.com
+          href="https://dev-user-halokak.betalogika.tech/
 "
         >
           <div class="rectangle"></div>
-          <div class="label"><div class="text-wrapper">Contact US</div></div>
+          <div class="label"><div class="text-wrapper">Home</div></div>
         </a>
         <a href="halo"></a>
         <p class="hai-ahmad-selamat">
           Selamat datang di HaloKak! <br />
           Halaman ini digunakan sebagai beranda dari halaman verifikasi
           <br />
-          Contact Admin Jika Ada Masalah Dalam Verifikasi :
+          Silahkan Click Tombol Home Untuk Kembali Ke Halaman Aplikasi Halokak
         </p>
         <img
           class="element"
@@ -143,7 +143,7 @@ export default {
 
   /**label wrapper */
   height: 34px;
-  left: 300px;
+  left: 312px;
   position: absolute;
   top: 314px;
   width: 105px;
@@ -158,7 +158,7 @@ export default {
   font-family: "Poppins-Medium", Helvetica;
   font-weight: 500;
   color: #ffffff;
-  font-size: 12px;
+  font-size: 15px;
   letter-spacing: 0;
   line-height: 15px;
 }
