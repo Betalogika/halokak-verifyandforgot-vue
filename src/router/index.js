@@ -12,6 +12,14 @@ const router = createRouter({
       },
     },
     {
+      path: "/verify",
+      name: "verify",
+      component: () => import("@/views/VerifyAccount.vue"),
+      meta: {
+        title: "Verify Account",
+      },
+    },
+    {
       path: "/:pathMatch(.*)*", //event page not found when search
       name: "not-found",
       component: () => import("@/views/PageNotFound.vue"),
