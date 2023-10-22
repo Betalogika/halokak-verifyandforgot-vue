@@ -11,12 +11,10 @@
   </div>
 </template>
 
-<script setup>
-import Div from "@/screens/NotifEmail/sections/Div.vue";
-import OverlapWrapper from "@/screens/NotifEmail/sections/OverlapWrapper.vue";
-</script>
-
 <script>
+import Div from "./NotifEmail/sections/Div.vue";
+import OverlapWrapper from "./NotifEmail/sections/OverlapWrapper.vue";
+
 export default {
   name: "NotifEmail",
   components: {
@@ -26,7 +24,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
 .notif-email {
   background-color: #ffffff;
   display: flex;
