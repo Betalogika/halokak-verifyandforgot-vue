@@ -15,12 +15,20 @@
         /></a> -->
                 <a href="halo"></a>
                 <p class="hai-ahmad-selamat">
-                  Verify Dimulai! <br />
+                  Verify Account
+                  <b>{{ this.verify.data.data.username }}</b> Dimulai!
                   <br />
-                  Mohon Tunggu Karena Sistem Sedang Melakukan Verifikasi
+                  Mohon Tunggu Karena Sistem Sedang
+                  <br />
+                  Melakukan Verifikasi Account/Email:
+                  <b>{{ this.verify.data.data.email }}</b>
+                  <br />
                 </p>
                 <ScaleLoader class="element" />
-                <p class="responseVerify">{{ verify.data.message }} : 5</p>
+                <p class="responseVerify">
+                  {{ this.verify.data.message }}
+                  : 5
+                </p>
               </div>
               <p class="terima-kasih-tim">
                 Terima kasih! <br />
@@ -51,21 +59,25 @@ export default {
     return {
       verify: {
         isLoading: false,
-        data: null,
+        data: {
+          message: "",
+          data: {},
+        },
       },
     };
   },
 
   mounted() {
-    this.verifyAccount();
+    this.checkVerifyAccount();
   },
   methods: {
-    verifyAccount() {
+    checkVerifyAccount() {
       apis
         .checkVerify(this.$route.params.token)
         .then(({ data }) => {
           this.verify.isLoading = true;
           this.verify.data = data;
+          console.log(data.data);
         })
         .catch((error) => {
           console.log(error.response);
