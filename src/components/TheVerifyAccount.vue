@@ -16,12 +16,12 @@
                 <a href="halo"></a>
                 <p class="hai-ahmad-selamat">
                   Verify Account
-                  <b>{{ this.verify.data.data.username }}</b> Dimulai!
+                  <b>{{ this.checkVerify.data.data.username }}</b> Dimulai!
                   <br />
                   Mohon Tunggu Karena Sistem Sedang
                   <br />
                   Melakukan Verifikasi Account/Email:
-                  <b>{{ this.verify.data.data.email }}</b>
+                  <b>{{ this.checkVerify.data.data.email }}</b>
                   <br />
                 </p>
                 <ScaleLoader class="element" />
@@ -61,7 +61,7 @@ export default {
 
   data() {
     return {
-      verify: {
+      checkVerify: {
         isLoading: false,
         data: {
           message: "",
@@ -69,11 +69,19 @@ export default {
         },
       },
       countDown: 10,
+      verify: {
+        isLoading: false,
+        data: {
+          message: "",
+          data: {},
+        },
+      },
     };
   },
 
   mounted() {
     this.checkVerifyAccount();
+    this.verifyAccount();
     this.countDownTimer();
   },
 
@@ -82,15 +90,15 @@ export default {
       apis
         .checkVerify(this.$route.params.token)
         .then(({ data }) => {
-          this.verify.isLoading = true;
-          this.verify.data = data;
+          this.checkVerify.isLoading = true;
+          this.checkVerify.data = data;
           console.log(data.data);
         })
         .catch((error) => {
           console.log(error.response);
         })
         .finally(() => {
-          this.verify.isLoading = false;
+          this.checkVerify.isLoading = false;
         });
     },
     verifyAccount() {
@@ -98,9 +106,10 @@ export default {
         .verify(this.$route.params.token)
         .then(({ data }) => {
           this.verify.isLoading = true;
+          this.verify.data = data;
         })
         .catch((error) => {
-          this.$route.push({
+          this.$router.push({
             name: "token-expire",
             params: { datas: error.response },
           });

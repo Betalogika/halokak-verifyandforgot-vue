@@ -22,7 +22,7 @@
                 <a href="halo"></a>
                 <p class="hai-ahmad-selamat">
                   Token Expire! <br />
-                  {{ this.$route.params.datas }}
+                  {{ this.datas }}
                   <br />
                   Contact Admin Jika Ada Masalah Dalam Verifikasi
                 </p>
