@@ -132,7 +132,7 @@ export default {
           this.countDownTimer();
         }, 1000);
       } else {
-        // window.location = `https://dev-user-halokak.betalogika.tech/`;
+        window.location = `https://dev-user-halokak.betalogika.tech/`;
       }
     },
   },
