@@ -12,6 +12,14 @@ const router = createRouter({
       },
     },
     {
+      path: "/token/expire",
+      name: "token-expire",
+      component: () => import("@/views/TokenExpire.vue"),
+      meta: {
+        title: "Token Expire Page",
+      },
+    },
+    {
       path: "/auth/verify/:token/account",
       name: "verify",
       component: () => import("@/views/VerifyAccount.vue"),
