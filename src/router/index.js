@@ -12,7 +12,7 @@ const router = createRouter({
       },
     },
     {
-      path: "/verify",
+      path: "/auth/verify/:token/account",
       name: "verify",
       component: () => import("@/views/VerifyAccount.vue"),
       meta: {

@@ -4,6 +4,7 @@ const endpoint = {
   verify: {
     index: "/verify",
     account: "account",
+    check: "check",
   },
   changePassword: {
     index: "/change",
@@ -11,7 +12,12 @@ const endpoint = {
   },
 };
 
-const api = {
+const apis = {
+  checkVerify(token) {
+    return resource.get(
+      `${endpoint.verify.index}/${token}/${endpoint.verify.check}`
+    );
+  },
   verify(token) {
     return resource.post(
       `${endpoint.verify.index}/${token}/${endpoint.verify.account}`
@@ -24,4 +30,4 @@ const api = {
   },
 };
 
-export default api;
+export default apis;

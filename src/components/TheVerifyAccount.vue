@@ -1,8 +1,3 @@
-<script setup>
-import Div from "@/screens/NotifEmail/sections/Div.vue";
-import ScaleLoader from "@/components/TheScaleLayout.vue";
-</script>
-
 <template>
   <div class="notif-email">
     <div class="group-wrapper-2">
@@ -25,10 +20,7 @@ import ScaleLoader from "@/components/TheScaleLayout.vue";
                   Mohon Tunggu Karena Sistem Sedang Melakukan Verifikasi
                 </p>
                 <ScaleLoader class="element" />
-                <p class="responseVerify">
-                  Selamat Akun Anda Berhasil Terverifikasi, mohon tunggu halaman
-                  ini akan mengarah ke aplikasi dalam hitungan : 5
-                </p>
+                <p class="responseVerify">{{ verify.data.message }} : 5</p>
               </div>
               <p class="terima-kasih-tim">
                 Terima kasih! <br />
@@ -44,11 +36,46 @@ import ScaleLoader from "@/components/TheScaleLayout.vue";
 </template>
 
 <script>
+import Div from "@/screens/NotifEmail/sections/Div.vue";
+import ScaleLoader from "@/components/TheScaleLayout.vue";
+import apis from "@/api";
+
 export default {
   name: "NotifEmail",
   components: {
     Div,
+    ScaleLoader,
   },
+
+  data() {
+    return {
+      verify: {
+        isLoading: false,
+        data: null,
+      },
+    };
+  },
+
+  mounted() {
+    this.verifyAccount();
+  },
+  methods: {
+    verifyAccount() {
+      apis
+        .checkVerify(this.$route.params.token)
+        .then(({ data }) => {
+          this.verify.isLoading = true;
+          this.verify.data = data;
+        })
+        .catch((error) => {
+          console.log(error.response);
+        })
+        .finally(() => {
+          this.verify.isLoading = false;
+        });
+    },
+  },
+  computed: {},
 };
 </script>
 
