@@ -12,9 +12,10 @@ const router = createRouter({
       },
     },
     {
-      path: "/token/expire",
+      path: "/token/:token/expire",
       name: "token-expire",
       component: () => import("@/views/TokenExpire.vue"),
+      props: false, //hide props
       meta: {
         title: "Token Expire Page",
       },

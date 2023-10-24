@@ -21,8 +21,10 @@
                 </a>
                 <a href="halo"></a>
                 <p class="hai-ahmad-selamat">
-                  Token Expire! <br />
-                  {{ this.datas }}
+                  Token Sudah Tidak Berlaku/Expire! <br />
+                  <br />
+                  <!-- {{ this.items }} -->
+                  <b>{{ this.verify.data.data.message }}</b>
                   <br />
                   Contact Admin Jika Ada Masalah Dalam Verifikasi
                 </p>
@@ -47,19 +49,47 @@
 
 <script>
 import Div from "@/screens/NotifEmail/sections/Div.vue";
+import apis from "@/api";
+
 export default {
   name: "token-expire",
-  props: ["datas"],
+  // props: { items: Object }, not use props
   components: {
     Div,
   },
   data() {
-    return {};
+    return {
+      verify: {
+        isLoading: false,
+        data: {
+          message: "",
+          data: {},
+        },
+      },
+    };
   },
-  mounted() {},
+  mounted() {
+    this.verifyAccount();
+  },
   created() {},
   computed: {},
-  methods: {},
+  methods: {
+    verifyAccount() {
+      apis
+        .verify(this.$route.params.token)
+        .then(({ data }) => {
+          this.verify.isLoading = true;
+          this.verify.data = data;
+        })
+        .catch((error) => {
+          this.verify.data = error.response;
+          console.log(error.response);
+        })
+        .finally(() => {
+          this.verify.isLoading = false;
+        });
+    },
+  },
   watch: {},
 };
 </script>

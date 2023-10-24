@@ -76,6 +76,9 @@ export default {
           data: {},
         },
       },
+      error: {
+        response: {},
+      },
     };
   },
 
@@ -109,10 +112,14 @@ export default {
           this.verify.data = data;
         })
         .catch((error) => {
-          this.$router.push({
-            name: "token-expire",
-            params: { datas: error.response },
-          });
+          //not use props
+          // this.$router.push({
+          //   name: "token-expire",
+          //   params: { items: this.error.response },
+          // });
+          // this.error.response = error.response;
+          this.$router.push(`/token/${this.$route.params.token}/expire`);
+          console.log(error.response);
         })
         .finally(() => {
           this.verify.isLoading = false;
