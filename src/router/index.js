@@ -1,5 +1,4 @@
 import { createRouter, createWebHistory } from "vue-router";
-import HomeView from "../views/HomeView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -7,17 +6,46 @@ const router = createRouter({
     {
       path: "/",
       name: "home",
-      component: HomeView,
+      component: () => import("@/views/Beranda.vue"),
+      meta: {
+        title: "Verifikasi Page",
+      },
     },
     {
-      path: "/about",
-      name: "about",
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import("../views/AboutView.vue"),
+      path: "/token/:token/expire",
+      name: "token-expire",
+      component: () => import("@/views/TokenExpire.vue"),
+      props: false, //hide props
+      meta: {
+        title: "Token Expire Page",
+      },
+    },
+    {
+      path: "/auth/verify/:token/account",
+      name: "verify",
+      component: () => import("@/views/VerifyAccount.vue"),
+      meta: {
+        title: "Verify Account",
+      },
+    },
+    {
+      path: "/:pathMatch(.*)*", //event page not found when search
+      name: "not-found",
+      component: () => import("@/views/PageNotFound.vue"),
+      meta: {
+        title: "page not found",
+      },
     },
   ],
+});
+
+router.beforeEach((toRoute, fromRoute, next) => {
+  window.document.title =
+    toRoute.meta && toRoute.meta.title
+      ? toRoute.meta.title
+      : import.meta.env.VITE_APP_NAME;
+
+  next();
 });
 
 export default router;
