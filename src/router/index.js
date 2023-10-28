@@ -29,6 +29,14 @@ const router = createRouter({
       },
     },
     {
+      path: "/auth/forgot/:token/password",
+      name: "verify",
+      component: () => import("@/views/ForgotPasswords.vue"),
+      meta: {
+        title: "Verify Account",
+      },
+    },
+    {
       path: "/:pathMatch(.*)*", //event page not found when search
       name: "not-found",
       component: () => import("@/views/PageNotFound.vue"),
