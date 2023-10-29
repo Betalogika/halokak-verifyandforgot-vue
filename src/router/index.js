@@ -30,8 +30,8 @@ const router = createRouter({
     },
     {
       path: "/auth/forgot/:token/password",
-      name: "verify",
-      component: () => import("@/views/ForgotPasswords.vue"),
+      name: "forgot-password",
+      component: () => import("@/views/ChangePassword.vue"),
       meta: {
         title: "Verify Account",
       },
