@@ -53,7 +53,7 @@ import ScaleLoader from "@/components/TheScaleLayout.vue";
 import apis from "@/api";
 
 export default {
-  name: "NotifEmail",
+  name: "TheVerifyAccount",
   components: {
     Div,
     ScaleLoader,

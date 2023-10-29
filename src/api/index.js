@@ -8,7 +8,7 @@ const endpoint = {
   },
   changePassword: {
     index: "/change",
-    password: "/password",
+    password: "password",
   },
 };
 
@@ -23,9 +23,10 @@ const apis = {
       `${endpoint.verify.index}/${token}/${endpoint.verify.account}`
     );
   },
-  forgotPassword(token) {
+  changePassword(token, data) {
     return resource.post(
-      `${endpoint.changePassword.index}/${token}/${endpoint.changePassword.password}`
+      `${endpoint.changePassword.index}/${token}/${endpoint.changePassword.password}`,
+      data
     );
   },
 };
