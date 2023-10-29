@@ -143,31 +143,18 @@ export default {
 }
 
 /** class css for forgot password */
-.box {
+.overlap-wrapper .box {
   height: 499px;
   width: 589px;
 }
 
-.box .group {
+.overlap-wrapper .box .group {
   height: 499px;
-  left: 220px;
-  position: fixed;
-  top: 100px;
+  left: 30px;
+  position: absolute;
+  top: -35px;
   width: 589px;
 }
-
-.box .overlap-wrapper {
-  height: 499px;
-  width: 591px;
-}
-
-/* .box .overlap {
-  background-color: #ffffff;
-  border-radius: 30px;
-  height: 499px;
-  position: relative;
-  width: 589px;
-} */
 
 .box .text-wrapper {
   color: #333333;
