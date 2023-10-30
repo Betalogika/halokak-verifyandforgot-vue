@@ -18,26 +18,41 @@ import Div from "@/screens/ForgotPassword/sections/Div.vue";
             src="https://alibabaspaces.betalogika.tech/assets/pageVerify/static/img/group-35123.png"
         /></a> -->
                 <div class="box">
-                  <div class="group">
-                    <div class="text-wrapper">Change Password</div>
-                    <div class="group-9">
-                      <div class="div-wrapper">
-                        <div class="overlap-group-4">
-                          <div class="text-wrapper-2">Reset</div>
-                        </div>
+                  <form id="forgot-password" @submit="changePasword">
+                    <div class="group">
+                      <div class="text-wrapper">
+                        <h2>Change Password</h2>
+                        <ul class="listError" v-for="error in errors">
+                          <li class="text-config">{{ error }}</li>
+                        </ul>
                       </div>
-                      <div class="group-10">
-                        <div class="text-wrapper-3">Sandi Baru</div>
-                        <div class="text-wrapper-4">Konfirmasi Sandi</div>
-                        <div class="iconly-light-show-wrapper">
-                          <IconlyLightShow />
+                      <div class="group-9">
+                        <div class="div-wrapper">
+                          <button class="overlap-group-4">
+                            <div class="text-wrapper-2">Reset</div>
+                          </button>
                         </div>
-                        <div class="iconly-light-hide-wrapper">
-                          <IconlyLightHideWrapper />
+                        <div class="group-10">
+                          <div class="text-wrapper-3">Password</div>
+                          <div class="text-wrapper-4">
+                            Password Confirmation
+                          </div>
+                          <div>
+                            <input
+                              type="text"
+                              class="iconly-light-show-wrapper"
+                              v-model="sandiBaru"
+                            />
+                          </div>
+                          <input
+                            type="password"
+                            class="iconly-light-hide-wrapper"
+                            v-model="sandiKonfirmasi"
+                          />
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </form>
                 </div>
               </div>
             </div>
@@ -64,27 +79,39 @@ export default {
     return {
       forgot: {
         isLoading: null,
-        data: null,
+        data: {},
       },
+      sandiBaru: null,
+      sandiKonfirmasi: null,
+      errors: [],
     };
   },
 
-  mounted() {},
+  mounted() {
+    this.checkPassword();
+  },
 
   methods: {
-    changePasword() {
-      const bodyChangePassword = {
-        email: "",
-        password: "",
-        password_confirmation: "",
-      };
+    checkPassword() {
       apis
-        .changePassword(this.$route.params.token, bodyChangePassword)
-        .then(({ data }) => {})
-        .catch((error) => {
-          console.log(error.response);
+        .checkForgotPass(this.$route.params.token)
+        .then(({ data }) => {
+          this.forgot.isLoading = true;
+          this.forgot.data = data.data;
+          console.log(data.data);
         })
-        .finally(() => {});
+        .catch((error) => console.log(error.response))
+        .finally(() => {
+          this.forgot.isLoading = false;
+        });
+    },
+    changePasword: function (e) {
+      if (this.sandiBaru && this.sandiKonfirmasi) return true;
+      this.errors = [];
+      if (!this.sandiBaru) this.errors.push("sandi baru wajib di isi");
+      if (!this.sandiKonfirmasi)
+        this.errors.push("sandi konfirmasi wajib di isi");
+      e.preventDefault();
     },
   },
 };
@@ -226,21 +253,29 @@ export default {
   top: -35px;
   width: 589px;
 }
-
+/** text wrapper for change password */
 .box .text-wrapper {
   color: #333333;
   font-family: "Poppins", Helvetica;
-  font-size: 24px;
+  font-size: 15px;
   font-weight: 700;
   height: 25px;
   left: 202px;
   letter-spacing: 0;
-  line-height: 36px;
   position: absolute;
   text-align: center;
-  top: 108px;
+  top: 75px;
   white-space: nowrap;
   width: 207px;
+}
+
+ul .listError {
+  list-style-type: circle;
+}
+
+.text-config {
+  /* margin-left: 100px; */
+  size: 50px;
 }
 
 .box .div {

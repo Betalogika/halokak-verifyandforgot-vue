@@ -33,7 +33,7 @@ const router = createRouter({
       name: "forgot-password",
       component: () => import("@/views/ChangePassword.vue"),
       meta: {
-        title: "Verify Account",
+        title: "Change Password", 
       },
     },
     {

@@ -10,9 +10,25 @@ const endpoint = {
     index: "/change",
     password: "password",
   },
+  forgotPass: {
+    index: "/forgot",
+    check: "check",
+    password: "password",
+  },
 };
 
 const apis = {
+  forgotPassword() {
+    return resource.post(
+      `${endpoint.forgotPass.index}/${endpoint.forgotPass.password}`
+    );
+  },
+  checkForgotPass(token) {
+    return resource.get(
+      `${endpoint.forgotPass.index}/${token}/${endpoint.forgotPass.check}`
+    );
+  },
+
   checkVerify(token) {
     return resource.get(
       `${endpoint.verify.index}/${token}/${endpoint.verify.check}`
