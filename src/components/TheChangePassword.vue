@@ -18,41 +18,37 @@ import Div from "@/screens/ForgotPassword/sections/Div.vue";
             src="https://alibabaspaces.betalogika.tech/assets/pageVerify/static/img/group-35123.png"
         /></a> -->
                 <div class="box">
-                  <form id="forgot-password" @submit="changePasword">
-                    <div class="group">
-                      <div class="text-wrapper">
-                        <h2>Change Password</h2>
-                        <ul class="listError" v-for="error in errors">
-                          <li class="text-config">{{ error }}</li>
-                        </ul>
+                  <div class="group">
+                    <div class="text-wrapper">
+                      <h2>Change Password</h2>
+                      <ul class="listError" v-for="error in errors">
+                        <li class="text-config">{{ error.data }}</li>
+                      </ul>
+                    </div>
+                    <div class="group-9">
+                      <div class="div-wrapper">
+                        <button class="overlap-group-4" @click="changePasword">
+                          <div class="text-wrapper-2">Reset</div>
+                        </button>
                       </div>
-                      <div class="group-9">
-                        <div class="div-wrapper">
-                          <button class="overlap-group-4">
-                            <div class="text-wrapper-2">Reset</div>
-                          </button>
-                        </div>
-                        <div class="group-10">
-                          <div class="text-wrapper-3">Password</div>
-                          <div class="text-wrapper-4">
-                            Password Confirmation
-                          </div>
-                          <div>
-                            <input
-                              type="text"
-                              class="iconly-light-show-wrapper"
-                              v-model="sandiBaru"
-                            />
-                          </div>
+                      <div class="group-10">
+                        <div class="text-wrapper-3">Password</div>
+                        <div class="text-wrapper-4">Password Confirmation</div>
+                        <div>
                           <input
                             type="password"
-                            class="iconly-light-hide-wrapper"
-                            v-model="sandiKonfirmasi"
+                            class="iconly-light-show-wrapper"
+                            v-model="sandiBaru"
                           />
                         </div>
+                        <input
+                          type="password"
+                          class="iconly-light-hide-wrapper"
+                          v-model="sandiKonfirmasi"
+                        />
                       </div>
                     </div>
-                  </form>
+                  </div>
                 </div>
               </div>
             </div>
@@ -96,22 +92,33 @@ export default {
       apis
         .checkForgotPass(this.$route.params.token)
         .then(({ data }) => {
-          this.forgot.isLoading = true;
+          // this.forgot.isLoading = true;
           this.forgot.data = data.data;
           console.log(data.data);
         })
         .catch((error) => console.log(error.response))
         .finally(() => {
-          this.forgot.isLoading = false;
+          // this.forgot.isLoading = false;
         });
     },
     changePasword: function (e) {
-      if (this.sandiBaru && this.sandiKonfirmasi) return true;
-      this.errors = [];
-      if (!this.sandiBaru) this.errors.push("sandi baru wajib di isi");
-      if (!this.sandiKonfirmasi)
-        this.errors.push("sandi konfirmasi wajib di isi");
-      e.preventDefault();
+      console.log({
+        email: this.forgot.data.email,
+        password: this.sandiBaru,
+        password_confirmation: this.sandiKonfirmasi,
+      });
+      apis
+        .changePassword(this.$route.params.token, {
+          email: this.forgot.data.email,
+          password: this.sandiBaru,
+          password_confirmation: this.sandiKonfirmasi,
+        })
+        .then(({ data }) => {})
+        .catch((error) => {
+          this.errors.push(error.response.data);
+          console.log(error.response.data);
+        })
+        .finally(() => {});
     },
   },
 };
@@ -275,7 +282,7 @@ ul .listError {
 
 .text-config {
   /* margin-left: 100px; */
-  size: 50px;
+  color: #d00a0a;
 }
 
 .box .div {
@@ -548,7 +555,7 @@ ul .listError {
 .box .iconly-light-show-wrapper {
   background-color: #ffffff;
   border: 1px solid;
-  border-color: #d00a0a;
+  border-color: #6ac8d2;
   border-radius: 15px;
   height: 46px;
   left: 0;
