@@ -18,9 +18,10 @@ const endpoint = {
 };
 
 const apis = {
-  forgotPassword() {
+  forgotPassword(data) {
     return resource.post(
-      `${endpoint.forgotPass.index}/${endpoint.forgotPass.password}`
+      `${endpoint.forgotPass.index}/${endpoint.forgotPass.password}`,
+      data
     );
   },
   checkForgotPass(token) {
