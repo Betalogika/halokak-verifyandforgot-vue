@@ -162,4 +162,20 @@ export default {
   letter-spacing: 0;
   line-height: 15px;
 }
+
+/* Image Blinking Animation */
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.element {
+  animation: blink 3s infinite;
+}
 </style>
