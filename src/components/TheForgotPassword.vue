@@ -20,32 +20,26 @@ import Div from "@/screens/ForgotPassword/sections/Div.vue";
                 <div class="box">
                   <div class="group">
                     <div class="text-wrapper">
-                      <h2>Change Password</h2>
+                      <h2>Forgot Password</h2>
                       <ul class="listError" v-for="error in validation">
                         <li class="text-config">{{ error }}</li>
                       </ul>
                     </div>
                     <div class="group-9">
                       <div class="div-wrapper">
-                        <button class="overlap-group-4" @click="changePasword">
-                          <div class="text-wrapper-2">Reset</div>
+                        <button class="overlap-group-4" @click="forgotPass">
+                          <div class="text-wrapper-2">Send</div>
                         </button>
                       </div>
                       <div class="group-10">
-                        <div class="text-wrapper-3">Password</div>
-                        <div class="text-wrapper-4">Password Confirmation</div>
+                        <div class="text-wrapper-3">Email</div>
                         <div>
                           <input
-                            type="password"
+                            type="text"
                             class="iconly-light-show-wrapper"
-                            v-model="sandiBaru"
+                            v-model="email"
                           />
                         </div>
-                        <input
-                          type="password"
-                          class="iconly-light-hide-wrapper"
-                          v-model="sandiKonfirmasi"
-                        />
                       </div>
                     </div>
                   </div>
@@ -73,18 +67,24 @@ export default {
 
   data() {
     return {
-      email: null,
+      forgot: {
+        isLoading: false,
+        data: null,
+      },
+      email: "",
+      errors: [],
+      validation: [],
     };
   },
 
   methods: {
-    forgotPassword: function (e) {
+    forgotPass: function (e) {
       apis
-        .changePassword({ email: this.email })
+        .forgotPassword({ email: this.email })
         .then(({ data }) => {
           this.forgot.isLoading = true;
-          this.$router.push({ name: "success-change-password" });
-        }) //success after change password
+          this.$router.push({ name: "success-forgot-password" });
+        })
         .catch((error) => {
           //catch error validation
           this.errors.push(error.response.data.data); //simpan semua list object errornya
@@ -92,7 +92,7 @@ export default {
             // buatin logic foreach untuk loop semua object errornya
             console.log(data[i]); // debug loop by index errornya, untuk memastikan loop errornya jalan
             this.validation.push(data[i].message); //ambil semua index errornya lalu tampilkan pesannya errornya
-            window.location.reload(); //jika masih error maka refresh pagenya agar kembali ke untuk mengisi data
+            // window.location.reload(); //jika masih error maka refresh pagenya agar kembali ke untuk mengisi data
           });
         })
         .finally(() => {
@@ -466,7 +466,7 @@ ul .listError {
   height: 46px;
   left: 114px;
   position: absolute;
-  top: 182px;
+  top: 120px;
   width: 128px;
 }
 

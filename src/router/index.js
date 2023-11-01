@@ -35,7 +35,7 @@ const router = createRouter({
       component: () => import("@/views/ForgotPassword.vue"),
       props: false, //hide props
       meta: {
-        title: "Forgot Expire Page",
+        title: "Forgot Password Page",
       },
     },
     {
@@ -48,6 +48,15 @@ const router = createRouter({
       },
     },
     {
+      path: "/success/forgot/password",
+      name: "success-forgot-password",
+      component: () => import("@/views/SuccessForgotPassword.vue"),
+      props: false, //hide props
+      meta: {
+        title: "Success Forgot Password",
+      },
+    },
+    {
       path: "/auth/verify/:token/account",
       name: "verify",
       component: () => import("@/views/VerifyAccount.vue"),
@@ -57,7 +66,7 @@ const router = createRouter({
     },
     {
       path: "/auth/forgot/:token/password",
-      name: "forgot-password",
+      name: "change-password",
       component: () => import("@/views/ChangePassword.vue"),
       meta: {
         title: "Change Password",
