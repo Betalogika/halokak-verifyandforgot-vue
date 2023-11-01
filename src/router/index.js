@@ -21,11 +21,37 @@ const router = createRouter({
       },
     },
     {
+      path: "/forgot/:token/expire",
+      name: "forgot-expire",
+      component: () => import("@/views/ForgotTokenExpire.vue"),
+      props: false, //hide props
+      meta: {
+        title: "Forgot Expire Page",
+      },
+    },
+    {
+      path: "/success/change/password",
+      name: "success-change-password",
+      component: () => import("@/views/SuccessChangePassword.vue"),
+      props: false, //hide props
+      meta: {
+        title: "Success Change Password",
+      },
+    },
+    {
       path: "/auth/verify/:token/account",
       name: "verify",
       component: () => import("@/views/VerifyAccount.vue"),
       meta: {
         title: "Verify Account",
+      },
+    },
+    {
+      path: "/auth/forgot/:token/password",
+      name: "forgot-password",
+      component: () => import("@/views/ChangePassword.vue"),
+      meta: {
+        title: "Change Password",
       },
     },
     {
