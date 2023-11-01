@@ -112,7 +112,10 @@ export default {
           password: this.sandiBaru,
           password_confirmation: this.sandiKonfirmasi,
         })
-        .then(({ data }) => {}) //success after change password
+        .then(({ data }) => {
+          this.forgot.isLoading = true;
+          this.$router.push({ name: "success-change-password" });
+        }) //success after change password
         .catch((error) => {
           //catch error validation
           this.errors.push(error.response.data.data); //simpan semua list object errornya
@@ -123,7 +126,9 @@ export default {
             window.location.reload(); //jika masih error maka refresh pagenya agar kembali ke untuk mengisi data
           });
         })
-        .finally(() => {});
+        .finally(() => {
+          this.forgot.isLoading = false;
+        });
       e.preventDefault();
     },
   },
