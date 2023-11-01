@@ -30,6 +30,15 @@ const router = createRouter({
       },
     },
     {
+      path: "/forgot/password",
+      name: "forgot-password",
+      component: () => import("@/views/ForgotTokenExpire.vue"),
+      props: false, //hide props
+      meta: {
+        title: "Forgot Expire Page",
+      },
+    },
+    {
       path: "/success/change/password",
       name: "success-change-password",
       component: () => import("@/views/SuccessChangePassword.vue"),
