@@ -8,11 +8,27 @@ const endpoint = {
   },
   changePassword: {
     index: "/change",
-    password: "/password",
+    password: "password",
+  },
+  forgotPass: {
+    index: "/forgot",
+    check: "check",
+    password: "password",
   },
 };
 
 const apis = {
+  forgotPassword() {
+    return resource.post(
+      `${endpoint.forgotPass.index}/${endpoint.forgotPass.password}`
+    );
+  },
+  checkForgotPass(token) {
+    return resource.get(
+      `${endpoint.forgotPass.index}/${token}/${endpoint.forgotPass.check}`
+    );
+  },
+
   checkVerify(token) {
     return resource.get(
       `${endpoint.verify.index}/${token}/${endpoint.verify.check}`
@@ -23,9 +39,10 @@ const apis = {
       `${endpoint.verify.index}/${token}/${endpoint.verify.account}`
     );
   },
-  forgotPassword(token) {
+  changePassword(token, data) {
     return resource.post(
-      `${endpoint.changePassword.index}/${token}/${endpoint.changePassword.password}`
+      `${endpoint.changePassword.index}/${token}/${endpoint.changePassword.password}`,
+      data
     );
   },
 };

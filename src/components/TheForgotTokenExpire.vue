@@ -13,26 +13,26 @@
             alt="Group"
             src="https://alibabaspaces.betalogika.tech/assets/pageVerify/static/img/group-35123.png"
         /></a> -->
+                <a class="box" href="https://dev-user-halokak.betalogika.tech/">
+                  <div class="rectangle"></div>
+                  <div class="label">
+                    <div class="text-wrapper">Home</div>
+                  </div>
+                </a>
                 <a href="halo"></a>
                 <p class="hai-ahmad-selamat">
-                  Verify Account
-                  <b>{{ this.checkVerify.data.data.username }}</b> Dimulai!
+                  Token Sudah Tidak Berlaku/Expire! <br />
                   <br />
-                  Mohon Tunggu Karena Sistem Sedang
+                  <!-- {{ this.items }} -->
+                  <b>{{ this.forgotPass.data.message }}</b>
                   <br />
-                  Melakukan Verifikasi Account/Email:
-                  <b>{{ this.checkVerify.data.data.email }}</b>
-                  <br />
+                  Contact Admin Jika Ada Masalah Dalam Verifikasi
                 </p>
-                <ScaleLoader class="element" />
-                <p class="responseVerify">
-                  {{ this.verify.data.message }}
-                  <br />
-                  <br />
-                  mohon tunggu halaman ini akan
-                  <br />
-                  mengarah ke aplikasi dalam hitungan :{{ this.countDown }}
-                </p>
+                <img
+                  class="element"
+                  alt="Element"
+                  src="https://alibabaspaces.betalogika.tech/assets/emailverify/img/tokenexpire.png"
+                />
               </div>
               <p class="terima-kasih-tim">
                 Terima kasih! <br />
@@ -49,94 +49,45 @@
 
 <script>
 import Div from "@/screens/NotifEmail/sections/Div.vue";
-import ScaleLoader from "@/components/TheScaleLayout.vue";
 import apis from "@/api";
 
 export default {
-  name: "TheVerifyAccount",
+  name: "token-expire",
+  // props: { items: Object }, not use props
   components: {
     Div,
-    ScaleLoader,
   },
-
   data() {
     return {
-      checkVerify: {
+      forgotPass: {
         isLoading: false,
-        data: {
-          message: "",
-          data: {},
-        },
-      },
-      countDown: 10,
-      verify: {
-        isLoading: false,
-        data: {
-          message: "",
-          data: {},
-        },
-      },
-      error: {
-        response: {},
+        data: {},
       },
     };
   },
-
   mounted() {
-    this.checkVerifyAccount();
-    this.verifyAccount();
-    this.countDownTimer();
+    this.changePassword();
   },
-
-  methods: {
-    checkVerifyAccount() {
-      apis
-        .checkVerify(this.$route.params.token)
-        .then(({ data }) => {
-          this.checkVerify.isLoading = true;
-          this.checkVerify.data = data;
-          console.log(data.data);
-        })
-        .catch((error) => {
-          console.log(error.response);
-        })
-        .finally(() => {
-          this.checkVerify.isLoading = false;
-        });
-    },
-    verifyAccount() {
-      apis
-        .verify(this.$route.params.token)
-        .then(({ data }) => {
-          this.verify.isLoading = true;
-          this.verify.data = data;
-        })
-        .catch((error) => {
-          //not use props
-          // this.$router.push({
-          //   name: "token-expire",
-          //   params: { items: this.error.response },
-          // });
-          // this.error.response = error.response;
-          this.$router.push(`/token/${this.$route.params.token}/expire`);
-          console.log(error.response);
-        })
-        .finally(() => {
-          this.verify.isLoading = false;
-        });
-    },
-    countDownTimer() {
-      if (this.countDown > 0) {
-        setTimeout(() => {
-          this.countDown -= 1;
-          this.countDownTimer();
-        }, 1000);
-      } else {
-        window.location = `https://dev-user-halokak.betalogika.tech/`;
-      }
-    },
-  },
+  created() {},
   computed: {},
+  methods: {
+    changePassword() {
+      apis
+        .checkForgotPass(this.$route.params.token)
+        .then(({ data }) => {
+          this.forgotPass.isLoading = true;
+          this.forgotPass.data = data.data;
+        })
+        .catch((error) => {
+          this.forgotPass.data = error.response.data;
+          console.log(error.response.data);
+        })
+        .finally(() => {
+          this.forgotPass.isLoading = false;
+        });
+    },
+  },
+  watch: {},
 };
 </script>
 
@@ -216,28 +167,12 @@ export default {
   width: 667px;
 }
 
-.overlap-wrapper .responseVerify {
-  color: #53565a;
-  font-family: "Poppins", Helvetica;
-  font-size: 15px;
-  font-weight: 400;
-  height: 133px;
-  font-weight: bold;
-  left: 0;
-  letter-spacing: 0.15px;
-  line-height: 24px;
-  position: absolute;
-  text-align: center;
-  top: 220px;
-  width: 667px;
-}
-
 .overlap-wrapper .element {
-  height: 200px;
-  left: 127px;
+  height: 192px;
+  left: 227px;
   position: absolute;
-  top: 150px;
-  width: 422px;
+  top: 110px;
+  width: 212px;
 }
 
 .overlap-wrapper .terima-kasih-tim {
@@ -298,7 +233,7 @@ export default {
   font-family: "Poppins-Medium", Helvetica;
   font-weight: 500;
   color: #ffffff;
-  font-size: 12px;
+  font-size: 20px;
   letter-spacing: 0;
   line-height: 15px;
 }

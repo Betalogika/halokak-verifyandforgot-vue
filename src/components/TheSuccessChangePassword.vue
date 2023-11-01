@@ -1,3 +1,7 @@
+<script setup>
+import Div from "@/screens/NotifEmail/sections/Div.vue";
+</script>
+
 <template>
   <div class="notif-email">
     <div class="group-wrapper-2">
@@ -13,26 +17,27 @@
             alt="Group"
             src="https://alibabaspaces.betalogika.tech/assets/pageVerify/static/img/group-35123.png"
         /></a> -->
+                <a
+                  class="box"
+                  href="https://dev-user-halokak.betalogika.tech/
+"
+                >
+                  <div class="rectangle"></div>
+                  <div class="label"><div class="text-wrapper">Home</div></div>
+                </a>
                 <a href="halo"></a>
                 <p class="hai-ahmad-selamat">
-                  Verify Account
-                  <b>{{ this.checkVerify.data.data.username }}</b> Dimulai!
+                  Selamat! <br />
+                  Password anda berhasil di ubah.
                   <br />
-                  Mohon Tunggu Karena Sistem Sedang
-                  <br />
-                  Melakukan Verifikasi Account/Email:
-                  <b>{{ this.checkVerify.data.data.email }}</b>
-                  <br />
+                  Selanjutnya klik tombol home untuk mengarah ke aplikasi halo
+                  kak
                 </p>
-                <ScaleLoader class="element" />
-                <p class="responseVerify">
-                  {{ this.verify.data.message }}
-                  <br />
-                  <br />
-                  mohon tunggu halaman ini akan
-                  <br />
-                  mengarah ke aplikasi dalam hitungan :{{ this.countDown }}
-                </p>
+                <img
+                  class="element"
+                  alt="Element"
+                  src="https://alibabaspaces.betalogika.tech/assets/emailverify/img/icon-park-solid_check-correct.png"
+                />
               </div>
               <p class="terima-kasih-tim">
                 Terima kasih! <br />
@@ -48,95 +53,14 @@
 </template>
 
 <script>
-import Div from "@/screens/NotifEmail/sections/Div.vue";
-import ScaleLoader from "@/components/TheScaleLayout.vue";
-import apis from "@/api";
-
 export default {
-  name: "TheVerifyAccount",
+  name: "SuccessChangePassword",
   components: {
     Div,
-    ScaleLoader,
   },
-
-  data() {
-    return {
-      checkVerify: {
-        isLoading: false,
-        data: {
-          message: "",
-          data: {},
-        },
-      },
-      countDown: 10,
-      verify: {
-        isLoading: false,
-        data: {
-          message: "",
-          data: {},
-        },
-      },
-      error: {
-        response: {},
-      },
-    };
-  },
-
-  mounted() {
-    this.checkVerifyAccount();
-    this.verifyAccount();
-    this.countDownTimer();
-  },
-
-  methods: {
-    checkVerifyAccount() {
-      apis
-        .checkVerify(this.$route.params.token)
-        .then(({ data }) => {
-          this.checkVerify.isLoading = true;
-          this.checkVerify.data = data;
-          console.log(data.data);
-        })
-        .catch((error) => {
-          console.log(error.response);
-        })
-        .finally(() => {
-          this.checkVerify.isLoading = false;
-        });
-    },
-    verifyAccount() {
-      apis
-        .verify(this.$route.params.token)
-        .then(({ data }) => {
-          this.verify.isLoading = true;
-          this.verify.data = data;
-        })
-        .catch((error) => {
-          //not use props
-          // this.$router.push({
-          //   name: "token-expire",
-          //   params: { items: this.error.response },
-          // });
-          // this.error.response = error.response;
-          this.$router.push(`/token/${this.$route.params.token}/expire`);
-          console.log(error.response);
-        })
-        .finally(() => {
-          this.verify.isLoading = false;
-        });
-    },
-    countDownTimer() {
-      if (this.countDown > 0) {
-        setTimeout(() => {
-          this.countDown -= 1;
-          this.countDownTimer();
-        }, 1000);
-      } else {
-        window.location = `https://dev-user-halokak.betalogika.tech/`;
-      }
-    },
-  },
-  computed: {},
+  data() {},
+  mounted() {},
+  methods: {},
 };
 </script>
 
@@ -168,7 +92,6 @@ export default {
   position: relative;
   width: 698px;
 }
-
 .overlap-wrapper {
   height: 500px;
   left: 13px;
@@ -216,28 +139,12 @@ export default {
   width: 667px;
 }
 
-.overlap-wrapper .responseVerify {
-  color: #53565a;
-  font-family: "Poppins", Helvetica;
-  font-size: 15px;
-  font-weight: 400;
-  height: 133px;
-  font-weight: bold;
-  left: 0;
-  letter-spacing: 0.15px;
-  line-height: 24px;
-  position: absolute;
-  text-align: center;
-  top: 220px;
-  width: 667px;
-}
-
 .overlap-wrapper .element {
-  height: 200px;
-  left: 127px;
+  height: 212px;
+  left: 227px;
   position: absolute;
-  top: 150px;
-  width: 422px;
+  top: 104px;
+  width: 212px;
 }
 
 .overlap-wrapper .terima-kasih-tim {
@@ -273,7 +180,7 @@ export default {
   height: 34px;
   left: 281px;
   position: absolute;
-  top: 304px;
+  top: 325px;
   width: 105px;
 }
 
@@ -283,9 +190,9 @@ export default {
 
   /**label wrapper */
   height: 34px;
-  left: 300px;
+  left: 312px;
   position: absolute;
-  top: 314px;
+  top: 335px;
   width: 105px;
 }
 
@@ -298,7 +205,7 @@ export default {
   font-family: "Poppins-Medium", Helvetica;
   font-weight: 500;
   color: #ffffff;
-  font-size: 12px;
+  font-size: 15px;
   letter-spacing: 0;
   line-height: 15px;
 }
