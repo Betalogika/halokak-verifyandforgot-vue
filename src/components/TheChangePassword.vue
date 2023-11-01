@@ -97,7 +97,10 @@ export default {
           this.forgot.data = data.data;
           console.log(data.data);
         })
-        .catch((error) => console.log(error.response))
+        .catch((error) => {
+          console.log(error.response);
+          this.$router.push(`/forgot/${this.$route.params.token}/expire`);
+        })
         .finally(() => {
           this.forgot.isLoading = false;
         });
