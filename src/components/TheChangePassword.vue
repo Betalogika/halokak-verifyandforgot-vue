@@ -120,7 +120,7 @@ export default {
             // buatin logic foreach untuk loop semua object errornya
             console.log(data[i]); // debug loop by index errornya, untuk memastikan loop errornya jalan
             this.validation.push(data[i].message); //ambil semua index errornya lalu tampilkan pesannya errornya
-            window.location.reload(); //jika masih error maka refresh pagenya agar kembali ke untuk menghisi data
+            window.location.reload(); //jika masih error maka refresh pagenya agar kembali ke untuk mengisi data
           });
         })
         .finally(() => {});
@@ -538,7 +538,7 @@ ul .listError {
   letter-spacing: 0;
   line-height: 36px;
   position: absolute;
-  top: 0;
+  top: -10px;
   white-space: nowrap;
   width: 97px;
 }
@@ -553,7 +553,7 @@ ul .listError {
   letter-spacing: 0;
   line-height: 36px;
   position: absolute;
-  top: 91px;
+  top: 85px;
   white-space: nowrap;
   width: 140px;
 }

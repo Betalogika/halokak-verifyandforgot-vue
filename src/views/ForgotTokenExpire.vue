@@ -3,5 +3,7 @@ import TheForgotTokenExpire from "@/components/TheForgotTokenExpire.vue";
 </script>
 
 <template>
-  <TheForgotTokenExpire />
+  <main>
+    <TheForgotTokenExpire />
+  </main>
 </template>

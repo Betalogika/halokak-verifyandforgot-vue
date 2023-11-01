@@ -30,6 +30,15 @@ const router = createRouter({
       },
     },
     {
+      path: "/success/change/password",
+      name: "success-change-password",
+      component: () => import("@/views/SuccessChangePassword.vue"),
+      props: false, //hide props
+      meta: {
+        title: "Success Change Password",
+      },
+    },
+    {
       path: "/auth/verify/:token/account",
       name: "verify",
       component: () => import("@/views/VerifyAccount.vue"),
