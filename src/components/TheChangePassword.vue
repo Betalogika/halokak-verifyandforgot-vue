@@ -21,8 +21,8 @@ import Div from "@/screens/ForgotPassword/sections/Div.vue";
                   <div class="group">
                     <div class="text-wrapper">
                       <h2>Change Password</h2>
-                      <ul class="listError" v-for="error in errors">
-                        <li class="text-config">{{ error.data }}</li>
+                      <ul class="listError" v-for="error in validation">
+                        <li class="text-config">{{ error }}</li>
                       </ul>
                     </div>
                     <div class="group-9">
@@ -79,7 +79,8 @@ export default {
       },
       sandiBaru: null,
       sandiKonfirmasi: null,
-      errors: [],
+      errors: [], //simpan semua list object errornya dari fields hingga message
+      validation: [], // digunakan hanya untuk menyimpan semua pesan error dari validasinya
     };
   },
 
@@ -92,31 +93,32 @@ export default {
       apis
         .checkForgotPass(this.$route.params.token)
         .then(({ data }) => {
-          // this.forgot.isLoading = true;
+          this.forgot.isLoading = true;
           this.forgot.data = data.data;
           console.log(data.data);
         })
         .catch((error) => console.log(error.response))
         .finally(() => {
-          // this.forgot.isLoading = false;
+          this.forgot.isLoading = false;
         });
     },
     changePasword: function (e) {
-      console.log({
-        email: this.forgot.data.email,
-        password: this.sandiBaru,
-        password_confirmation: this.sandiKonfirmasi,
-      });
       apis
         .changePassword(this.$route.params.token, {
           email: this.forgot.data.email,
           password: this.sandiBaru,
           password_confirmation: this.sandiKonfirmasi,
         })
-        .then(({ data }) => {})
+        .then(({ data }) => {}) //success after change password
         .catch((error) => {
-          this.errors.push(error.response.data);
-          console.log(error.response.data);
+          //catch error validation
+          this.errors.push(error.response.data.data); //simpan semua list object errornya
+          this.errors.forEach((data, i) => {
+            // buatin logic foreach untuk loop semua object errornya
+            console.log(data[i]); // debug loop by index errornya, untuk memastikan loop errornya jalan
+            this.validation.push(data[i].message); //ambil semua index errornya lalu tampilkan pesannya errornya
+            window.location.reload(); //jika masih error maka refresh pagenya agar kembali ke untuk menghisi data
+          });
         })
         .finally(() => {});
       e.preventDefault();
