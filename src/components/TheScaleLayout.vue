@@ -108,7 +108,6 @@ export default {
     -webkit-animation-iteration-count: inherit;
     -webkit-animation-direction: inherit;
   }
-  ,
   100% {
     -webkit-transform: scaleY(1);
     transform: scaleY(1);
@@ -126,7 +125,6 @@ export default {
     -webkit-animation-iteration-count: inherit;
     -webkit-animation-direction: inherit;
   }
-  ,
   100% {
     -webkit-transform: scaleY(1);
     transform: scaleY(1);

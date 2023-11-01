@@ -17,21 +17,21 @@ import Div from "@/screens/NotifEmail/sections/Div.vue";
             alt="Group"
             src="https://alibabaspaces.betalogika.tech/assets/pageVerify/static/img/group-35123.png"
         /></a> -->
-                <!-- <a
+                <a
                   class="box"
                   href="https://dev-user-halokak.betalogika.tech/
 "
                 >
                   <div class="rectangle"></div>
                   <div class="label"><div class="text-wrapper">Home</div></div>
-                </a> -->
+                </a>
                 <a href="halo"></a>
                 <p class="hai-ahmad-selamat">
                   Selamat! <br />
                   Password anda berhasil di ubah.
                   <br />
-                  Selanjutnya anda akan diarahkan ke halaman aplikasi halokak
-                  dalam hitungan: <b>{{ this.countDown }}</b>
+                  Selanjutnya klik tombol home untuk mengarah ke aplikasi halo
+                  kak
                 </p>
                 <img
                   class="element"
@@ -54,28 +54,13 @@ import Div from "@/screens/NotifEmail/sections/Div.vue";
 
 <script>
 export default {
-  name: "NotifEmail",
+  name: "SuccessChangePassword",
   components: {
     Div,
   },
-  data() {
-    return { countDown: 5 };
-  },
-  mounted() {
-    this.countDownTimer();
-  },
-  methods: {
-    countDownTimer() {
-      if (this.countDown > 0) {
-        setTimeout(() => {
-          this.countDown -= 1;
-          this.countDownTimer();
-        }, 1000);
-      } else {
-        window.location = `https://dev-user-halokak.betalogika.tech/`;
-      }
-    },
-  },
+  data() {},
+  mounted() {},
+  methods: {},
 };
 </script>
 
@@ -195,7 +180,7 @@ export default {
   height: 34px;
   left: 281px;
   position: absolute;
-  top: 304px;
+  top: 325px;
   width: 105px;
 }
 
@@ -207,7 +192,7 @@ export default {
   height: 34px;
   left: 312px;
   position: absolute;
-  top: 314px;
+  top: 335px;
   width: 105px;
 }
 
