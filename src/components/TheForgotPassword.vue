@@ -28,11 +28,11 @@ import Div from "@/screens/ForgotPassword/sections/Div.vue";
                     <div class="group-9">
                       <div class="div-wrapper">
                         <button class="overlap-group-4" @click="forgotPass">
-                          <div class="text-wrapper-2">Send</div>
+                          <div class="text-wrapper-2">Reset</div>
                         </button>
                       </div>
                       <div class="group-10">
-                        <div class="text-wrapper-3">Email</div>
+                        <div class="text-wrapper-3">Password</div>
                         <div>
                           <input
                             type="text"
@@ -92,7 +92,7 @@ export default {
             // buatin logic foreach untuk loop semua object errornya
             console.log(data[i]); // debug loop by index errornya, untuk memastikan loop errornya jalan
             this.validation.push(data[i].message); //ambil semua index errornya lalu tampilkan pesannya errornya
-            // window.location.reload(); //jika masih error maka refresh pagenya agar kembali ke untuk mengisi data
+            window.location.reload(); //jika masih error maka refresh pagenya agar kembali ke untuk mengisi data
           });
         })
         .finally(() => {
@@ -466,7 +466,7 @@ ul .listError {
   height: 46px;
   left: 114px;
   position: absolute;
-  top: 120px;
+  top: 170px;
   width: 128px;
 }
 
@@ -498,7 +498,7 @@ ul .listError {
   height: 162px;
   left: 0;
   position: absolute;
-  top: 0;
+  top: 25px;
   width: 362px;
 }
 
