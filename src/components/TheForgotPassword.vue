@@ -28,7 +28,7 @@ import Div from "@/screens/ForgotPassword/sections/Div.vue";
                     <div class="group-9">
                       <div class="div-wrapper">
                         <button class="overlap-group-4" @click="forgotPass">
-                          <div class="text-wrapper-2">Reset</div>
+                          <div class="text-wrapper-2">Kirim</div>
                         </button>
                       </div>
                       <div class="group-10">
