@@ -30,12 +30,30 @@ const router = createRouter({
       },
     },
     {
+      path: "/forgot/password",
+      name: "forgot-password",
+      component: () => import("@/views/ForgotPassword.vue"),
+      props: false, //hide props
+      meta: {
+        title: "Forgot Password Page",
+      },
+    },
+    {
       path: "/success/change/password",
       name: "success-change-password",
       component: () => import("@/views/SuccessChangePassword.vue"),
       props: false, //hide props
       meta: {
         title: "Success Change Password",
+      },
+    },
+    {
+      path: "/success/forgot/password",
+      name: "success-forgot-password",
+      component: () => import("@/views/SuccessForgotPassword.vue"),
+      props: false, //hide props
+      meta: {
+        title: "Success Forgot Password",
       },
     },
     {
@@ -48,7 +66,7 @@ const router = createRouter({
     },
     {
       path: "/auth/forgot/:token/password",
-      name: "forgot-password",
+      name: "change-password",
       component: () => import("@/views/ChangePassword.vue"),
       meta: {
         title: "Change Password",
