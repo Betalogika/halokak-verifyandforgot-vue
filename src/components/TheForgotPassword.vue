@@ -32,7 +32,7 @@ import Div from "@/screens/ForgotPassword/sections/Div.vue";
                         </button>
                       </div>
                       <div class="group-10">
-                        <div class="text-wrapper-3">Password</div>
+                        <div class="text-wrapper-3">Masukan Email Anda</div>
                         <div>
                           <input
                             type="text"
